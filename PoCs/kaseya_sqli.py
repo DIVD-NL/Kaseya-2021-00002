@@ -16,6 +16,7 @@
 from requests import Request, Session
 import urllib3
 import argparse
+from argparse import RawTextHelpFormatter
 from urllib import parse
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -107,7 +108,23 @@ class exploitSQLi(object):
         return ret
 
 def main():
-    parser = argparse.ArgumentParser(description='Exploit SQLi in Kaseya to retreive admin sessionId')
+    parser = argparse.ArgumentParser(description="""
+Exploit SQLi in Kaseya to retreive admin sessionId
+#############
+# SOME DISCLAIMER HERE
+# WIETSE FOUND IT
+# DIVD STUFF
+# DONATE LINK
+# 
+#  _____ _______      _______         _ 
+# |  __ \_   _\ \    / /  __ \       | |
+# | |  | || |  \ \  / /| |  | | _ __ | |
+# | |  | || |   \ \/ / | |  | || '_ \| |
+# | |__| || |_   \  /  | |__| || | | | |
+# |_____/_____|   \/   |_____(_)_| |_|_|                                     
+#
+#############
+""",formatter_class=RawTextHelpFormatter)
     parser.add_argument('-t','--target',
                         required=True,
                         help='IP or domain'

