@@ -58,7 +58,7 @@ action = function(host, port, redirects)
     title = "Kaseya VSA credential leak via client download page",
     state = vulns.STATE.NOT_VULN,
     description = [[
-Kaseya VS leaks agenta credentials if the agenta download page is openly accessible.
+Kaseya VS leaks agent credentials if the agent download page is openly accessible.
 It is recommended that you restrict access to this page.
 Vulnerability discovered by Wietse Boonstra of DIVD (https://www.divd.nl/team/Wietse%20Boonstra/)
     ]],
