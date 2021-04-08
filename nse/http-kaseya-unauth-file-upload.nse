@@ -42,7 +42,7 @@ action = function(host, port, redirects)
 Kaseya VSA is vulnerable to an arbitrary file upload vulnerability via /SystemTab/uploader.aspx
 Vulnerability discovered by Wietse Boonstra of DIVD (https://www.divd.nl/team/Wietse%20Boonstra/)
 
-This exoloit should have left file ']] .. randomname .. [[' on the system in C:\Kayseya\Webpages\ 
+This exploit should have left file ']] .. randomname .. [[' on the system in C:\Kayseya\Webpages\ 
     ]],
     IDS = {
         CVE = "CVE-2021-xxxxx"
