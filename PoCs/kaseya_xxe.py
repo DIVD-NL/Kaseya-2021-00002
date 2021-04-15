@@ -165,7 +165,11 @@ formatter_class=RawTextHelpFormatter,
     outputFile = args.o.strip()
     f = args.f.strip()
     up = urlparse(f)
-    lfi = up.path
+    if not up.hostname:
+        lfi = up.path
+    else:
+        lfi = "{}{}".format(up.hostname, up.path)
+        
     scheme = up.scheme
     serverIp = args.i.strip()
     port = args.p
